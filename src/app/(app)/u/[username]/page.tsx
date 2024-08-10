@@ -1,9 +1,8 @@
 "use client";
 
 import { useToast } from "@/components/ui/use-toast";
-import { Message } from "@/models/user.model";
 import { messageSchema } from "@/schemas/message.schema";
-import { ApiResponse } from "@/types/apiResponse";
+import { ApiResponse } from "@/types/ApiResponse";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios, { AxiosError } from "axios";
 import { useParams } from "next/navigation";
