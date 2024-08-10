@@ -17,18 +17,12 @@ import { Message } from "@/models/user.model";
 import { useToast } from "./ui/use-toast";
 import { ApiResponse } from "@/types/ApiResponse";
 import axios from "axios";
-import { Skeleton } from "@/components/ui/skeleton";
 
 type MessageCardProp = {
     message: Message;
     onMessageDelete: (messageId: string) => void;
-    isLoading: boolean;
 };
-const MessageCard = ({
-    message,
-    onMessageDelete,
-    isLoading,
-}: MessageCardProp) => {
+const MessageCard = ({ message, onMessageDelete }: MessageCardProp) => {
     const { toast } = useToast();
 
     const handleDeleteConfirm = async () => {
@@ -42,41 +36,33 @@ const MessageCard = ({
     };
     return (
         <>
-            {!isLoading ? (
-                <Card className="relative pr-6">
-                    <AlertDialog>
-                        <AlertDialogTrigger asChild>
-                            <Trash2 className="text-red-500 absolute top-4 right-4" />
-                        </AlertDialogTrigger>
-                        <AlertDialogContent>
-                            <AlertDialogHeader>
-                                <AlertDialogTitle>
-                                    Are you absolutely sure?
-                                </AlertDialogTitle>
-                                <AlertDialogDescription>
-                                    This will permanently delete this message
-                                    from the database.
-                                </AlertDialogDescription>
-                            </AlertDialogHeader>
-                            <AlertDialogFooter>
-                                <AlertDialogCancel>Cancel</AlertDialogCancel>
-                                <AlertDialogAction
-                                    onClick={handleDeleteConfirm}
-                                >
-                                    Continue
-                                </AlertDialogAction>
-                            </AlertDialogFooter>
-                        </AlertDialogContent>
-                    </AlertDialog>
-                    <CardContent>
-                        <p>{message.content}</p>
-                    </CardContent>
-                </Card>
-            ) : (
-                <div className="flex flex-col space-y-3">
-                    <Skeleton className="h-[50px] w-full rounded-xl" />
-                </div>
-            )}
+            <Card className="relative pr-6">
+                <AlertDialog>
+                    <AlertDialogTrigger asChild>
+                        <Trash2 className="text-red-500 absolute top-4 right-4" />
+                    </AlertDialogTrigger>
+                    <AlertDialogContent>
+                        <AlertDialogHeader>
+                            <AlertDialogTitle>
+                                Are you absolutely sure?
+                            </AlertDialogTitle>
+                            <AlertDialogDescription>
+                                This will permanently delete this message from
+                                the database.
+                            </AlertDialogDescription>
+                        </AlertDialogHeader>
+                        <AlertDialogFooter>
+                            <AlertDialogCancel>Cancel</AlertDialogCancel>
+                            <AlertDialogAction onClick={handleDeleteConfirm}>
+                                Continue
+                            </AlertDialogAction>
+                        </AlertDialogFooter>
+                    </AlertDialogContent>
+                </AlertDialog>
+                <CardContent>
+                    <p>{message.content}</p>
+                </CardContent>
+            </Card>
         </>
     );
 };

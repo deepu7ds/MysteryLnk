@@ -13,11 +13,12 @@ import { useSession } from "next-auth/react";
 import { useCallback, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Copy } from "lucide-react";
+import { Skeleton } from "@/components/ui/skeleton";
 import { useRouter } from "next/navigation";
 
 const Dashboard = () => {
     const [messages, setMessages] = useState<Message[]>([]);
-    const [isMessagesLoading, setIsMessagesLoading] = useState(false);
+    const [isMessagesLoading, setIsMessagesLoading] = useState(true);
     const [isSwitchLoading, setIsSwitchLoading] = useState(false);
 
     const { toast } = useToast();
@@ -97,6 +98,7 @@ const Dashboard = () => {
     }, [session, setValue, fetchAcceptMessages, fetchMessages]);
 
     const handleSwitchChange = async () => {
+        setValue("acceptMessages", !acceptMessages);
         try {
             const response = await axios.post<ApiResponse>(
                 "/api/accept-messages",
@@ -104,13 +106,13 @@ const Dashboard = () => {
                     acceptMessages: !acceptMessages,
                 }
             );
-            setValue("acceptMessages", !acceptMessages);
             toast({
                 title: "Success",
                 description: response?.data.message || "",
             });
         } catch (error) {
             const axiosError = error as AxiosError<ApiResponse>;
+            setValue("acceptMessages", !acceptMessages);
             toast({
                 title: "Error",
                 description:
@@ -123,7 +125,7 @@ const Dashboard = () => {
 
     // const { username } = session?.user as User;
     const username = user?.username;
-    const baseUrl = `https://mystery-lnk.vercel.app/`;
+    const baseUrl = `https://mystery-lnk.vercel.app/`; // todo change this hard coded value bitch
     const profileUrl = `${baseUrl}/u/${username}`;
 
     const copyToClipboard = () => {
@@ -132,10 +134,6 @@ const Dashboard = () => {
             title: "Copied",
         });
     };
-
-    // if (!session) {
-    //     router.replace("/sign-in");
-    // }
 
     return (
         <>
@@ -184,16 +182,28 @@ const Dashboard = () => {
                     </div>
                 </div>
                 <Separator />
-                <div className="flex flex-col gap-5 w-full lg:w-[70%] mt-4">
-                    {messages.map((message, index) => (
-                        <MessageCard
-                            key={index}
-                            message={message}
-                            onMessageDelete={handleDeleteMessages}
-                            isLoading={isMessagesLoading}
-                        />
-                    ))}
-                </div>
+                {!isMessagesLoading || !isSwitchLoading ? (
+                    messages.length !== 0 ? (
+                        <div className="flex flex-col gap-5 w-full lg:w-[70%] mt-4">
+                            {messages.map((message, index) => (
+                                <MessageCard
+                                    key={index}
+                                    message={message}
+                                    onMessageDelete={handleDeleteMessages}
+                                />
+                            ))}
+                        </div>
+                    ) : (
+                        <p>You have not received any message yet.</p>
+                    )
+                ) : (
+                    <div className="space-y-4">
+                        <Skeleton className="h-16" />
+                        <Skeleton className="h-16" />
+                        <Skeleton className="h-16" />
+                        <Skeleton className="h-16" />
+                    </div>
+                )}
             </div>
         </>
     );
