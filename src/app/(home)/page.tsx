@@ -7,6 +7,10 @@ import heroImage from "./image/hero.png";
 import hero2Image from "./image/hero2.png";
 import hero3Image from "./image/hero3.png";
 import hero4Image from "./image/hero4.png";
+import herodark from "./image/herodark.png";
+import hero2dark from "./image/hero2dark.png";
+import hero3dark from "./image/hero3dark.png";
+import hero4dark from "./image/hero4dark.png";
 import { Instagram } from "lucide-react";
 import { Linkedin } from "lucide-react";
 import { Github } from "lucide-react";
@@ -42,7 +46,14 @@ export default function Home() {
                             width={500}
                             height={300}
                             alt="Description of the image"
-                            className="rounded-xl"
+                            className="rounded-xl hidden dark:block"
+                        />
+                        <Image
+                            src={herodark}
+                            width={500}
+                            height={300}
+                            alt="Description of the image"
+                            className="rounded-xl block dark:hidden"
                         />
                     </div>
                 </section>
@@ -53,7 +64,14 @@ export default function Home() {
                             width={500}
                             height={300}
                             alt="Description of the image"
-                            className="rounded-xl"
+                            className="rounded-xl hidden dark:block"
+                        />
+                        <Image
+                            src={hero2dark}
+                            width={500}
+                            height={300}
+                            alt="Description of the image"
+                            className="rounded-xl block dark:hidden"
                         />
                     </div>
                     <p className="text-5xl font-extrabold col-span-6">
@@ -68,7 +86,14 @@ export default function Home() {
                             width={300}
                             height={100}
                             alt="Description of the image"
-                            className="rounded-xl shadow-lg"
+                            className="rounded-xl shadow-lg hidden dark:block"
+                        />
+                        <Image
+                            src={hero3dark}
+                            width={300}
+                            height={100}
+                            alt="Description of the image"
+                            className="rounded-xl shadow-lg block dark:hidden"
                         />
                         <p className="font-bold text-xl text-center">
                             Share{" "}
@@ -84,7 +109,14 @@ export default function Home() {
                             width={200}
                             height={100}
                             alt="Description of the image"
-                            className="rounded-xl shadow-lg"
+                            className="rounded-xl shadow-lg hidden dark:block"
+                        />
+                        <Image
+                            src={hero4dark}
+                            width={200}
+                            height={100}
+                            alt="Description of the image"
+                            className="rounded-xl shadow-lg block dark:hidden"
                         />
                         <p className="font-bold text-xl text-center">
                             <span className="font-extrabold text-blue-400">
