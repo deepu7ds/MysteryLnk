@@ -72,8 +72,8 @@ const Navbar = () => {
                                         </AlertDialogCancel>
                                         <AlertDialogAction
                                             onClick={() => {
-                                                router.replace("/");
                                                 signOut();
+                                                router.replace("/");
                                             }}
                                         >
                                             Logout
