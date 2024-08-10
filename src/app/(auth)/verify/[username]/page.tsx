@@ -25,7 +25,7 @@ import {
 } from "@/components/ui/input-otp";
 import { useState } from "react";
 
-const verify = () => {
+const Verify = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
 
     const router = useRouter();
@@ -128,4 +128,4 @@ const verify = () => {
     );
 };
 
-export default verify;
+export default Verify;
