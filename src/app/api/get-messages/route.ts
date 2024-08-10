@@ -12,13 +12,16 @@ export async function GET(request: Request) {
     const user: User = session?.user as User;
 
     if (!session || !session.user) {
-        return Response.json(
-            {
+        return new Response(
+            JSON.stringify({
                 success: false,
                 message: "not authenticated",
-            },
+            }),
             {
                 status: 401,
+                headers: {
+                    "Content-Type": "application/json",
+                },
             }
         );
     }
@@ -41,13 +44,16 @@ export async function GET(request: Request) {
         ]);
 
         if (!user) {
-            return Response.json(
-                {
+            return new Response(
+                JSON.stringify({
                     success: false,
                     message: "user not found",
-                },
+                }),
                 {
                     status: 404,
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
                 }
             );
         }
@@ -63,13 +69,16 @@ export async function GET(request: Request) {
         );
     } catch (error) {
         console.log("Error while getting messages: ", error);
-        return Response.json(
-            {
+        return new Response(
+            JSON.stringify({
                 success: false,
                 message: "error while getting messages",
-            },
+            }),
             {
                 status: 500,
+                headers: {
+                    "Content-Type": "application/json",
+                },
             }
         );
     }

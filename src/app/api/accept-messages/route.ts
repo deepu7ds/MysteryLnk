@@ -11,13 +11,16 @@ export async function POST(request: Request) {
     const user: User = session?.user as User;
 
     if (!session || !session.user) {
-        return Response.json(
-            {
+        return new Response(
+            JSON.stringify({
                 success: false,
-                message: "not authenticated",
-            },
+                message: "user not found",
+            }),
             {
-                status: 401,
+                status: 404,
+                headers: {
+                    "Content-Type": "application/json",
+                },
             }
         );
     }
@@ -29,36 +32,45 @@ export async function POST(request: Request) {
             isAcceptingMessage: acceptMessages,
         });
         if (!updatedUser) {
-            return Response.json(
-                {
+            return new Response(
+                JSON.stringify({
                     success: false,
                     message:
                         "failed to update user status to accepting message",
-                },
+                }),
                 {
                     status: 401,
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
                 }
             );
         }
-        return Response.json(
-            {
+        return new Response(
+            JSON.stringify({
                 success: true,
                 message: "successfully update accepting message status",
                 updatedUser,
-            },
+            }),
             {
                 status: 201,
+                headers: {
+                    "Content-Type": "application/json",
+                },
             }
         );
     } catch (error) {
         console.log("failed to update user status to accepting message");
-        return Response.json(
-            {
+        return new Response(
+            JSON.stringify({
                 success: false,
                 message: "failed to update user status to accepting message",
-            },
+            }),
             {
                 status: 500,
+                headers: {
+                    "Content-Type": "application/json",
+                },
             }
         );
     }
@@ -71,13 +83,16 @@ export async function GET(request: Request) {
     const user: User = session?.user as User;
 
     if (!session || !session.user) {
-        return Response.json(
-            {
+        return new Response(
+            JSON.stringify({
                 success: false,
                 message: "not authenticated",
-            },
+            }),
             {
                 status: 401,
+                headers: {
+                    "Content-Type": "application/json",
+                },
             }
         );
     }
@@ -86,34 +101,43 @@ export async function GET(request: Request) {
     try {
         const foundUser = await UserModel.findById(userId);
         if (!foundUser) {
-            return Response.json(
-                {
+            return new Response(
+                JSON.stringify({
                     success: false,
                     message: "user not found",
-                },
+                }),
                 {
                     status: 404,
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
                 }
             );
         }
-        return Response.json(
-            {
+        return new Response(
+            JSON.stringify({
                 success: true,
                 isAcceptingMessage: foundUser.isAcceptingMessage,
-            },
+            }),
             {
                 status: 201,
+                headers: {
+                    "Content-Type": "application/json",
+                },
             }
         );
     } catch (error) {
         console.log("failed to get user message accepting status");
-        return Response.json(
-            {
+        return new Response(
+            JSON.stringify({
                 success: false,
                 message: "failed to get user message accepting status",
-            },
+            }),
             {
                 status: 500,
+                headers: {
+                    "Content-Type": "application/json",
+                },
             }
         );
     }

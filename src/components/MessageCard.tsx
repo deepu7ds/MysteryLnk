@@ -15,7 +15,7 @@ import {
 import { Trash2 } from "lucide-react";
 import { Message } from "@/models/user.model";
 import { useToast } from "./ui/use-toast";
-import { ApiResponse } from "@/types/apiResponse";
+import { ApiResponse } from "@/types/ApiResponse";
 import axios from "axios";
 import { Skeleton } from "@/components/ui/skeleton";
 

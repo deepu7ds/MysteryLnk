@@ -123,7 +123,7 @@ const Dashboard = () => {
 
     // const { username } = session?.user as User;
     const username = user?.username;
-    const baseUrl = `${window.location.protocol}//${window.location.host}`;
+    const baseUrl = `https://mystery-lnk.vercel.app/`;
     const profileUrl = `${baseUrl}/u/${username}`;
 
     const copyToClipboard = () => {

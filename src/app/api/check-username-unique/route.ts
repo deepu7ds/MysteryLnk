@@ -15,13 +15,16 @@ export async function GET(request: Request) {
         const result = usernameQuerySchema.safeParse(queryParam);
 
         if (!result.success) {
-            return Response.json(
-                {
+            return new Response(
+                JSON.stringify({
                     success: false,
                     message: "",
-                },
+                }),
                 {
                     status: 400,
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
                 }
             );
         }
@@ -32,34 +35,43 @@ export async function GET(request: Request) {
             isVerified: true,
         });
         if (existingVerifiedUser) {
-            return Response.json(
-                {
+            return new Response(
+                JSON.stringify({
                     success: false,
                     message: "Username already taken",
-                },
+                }),
                 {
                     status: 400,
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
                 }
             );
         }
-        return Response.json(
-            {
+        return new Response(
+            JSON.stringify({
                 success: true,
                 message: "username is available",
-            },
+            }),
             {
                 status: 201,
+                headers: {
+                    "Content-Type": "application/json",
+                },
             }
         );
     } catch (error) {
         console.log("Error checking username", error);
-        return Response.json(
-            {
+        return new Response(
+            JSON.stringify({
                 message: "Error checking username",
                 success: false,
-            },
+            }),
             {
                 status: 500,
+                headers: {
+                    "Content-Type": "application/json",
+                },
             }
         );
     }

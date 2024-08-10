@@ -9,13 +9,16 @@ export async function POST(request: Request) {
 
         const user = await User.findOne({ username: decodedUsername });
         if (!user) {
-            return Response.json(
-                {
+            return new Response(
+                JSON.stringify({
                     success: false,
                     message: "Username not found",
-                },
+                }),
                 {
                     status: 500,
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
                 }
             );
         }
@@ -23,51 +26,63 @@ export async function POST(request: Request) {
         const isCodeValid = user.verifyCode === code;
 
         if (!isCodeValid) {
-            return Response.json(
-                {
+            return new Response(
+                JSON.stringify({
                     success: false,
                     message: "Verify code not correct",
-                },
+                }),
                 {
                     status: 400,
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
                 }
             );
         }
 
         const isCodeNotExpired = new Date(user.verifyCodeExpiry) > new Date();
         if (!isCodeNotExpired) {
-            return Response.json(
-                {
+            return new Response(
+                JSON.stringify({
                     success: false,
                     message: "Verification code is expired please signup again",
-                },
+                }),
                 {
                     status: 400,
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
                 }
             );
         }
 
         user.isVerified = true;
-        user.save();
+        await user.save();
 
-        return Response.json(
-            {
+        return new Response(
+            JSON.stringify({
                 success: true,
                 message: "user successfully verified",
-            },
+            }),
             {
                 status: 201,
+                headers: {
+                    "Content-Type": "application/json",
+                },
             }
         );
     } catch (error) {
         console.log("Error while verifying code ", error);
-        return Response.json(
-            {
+        return new Response(
+            JSON.stringify({
                 success: false,
                 message: "Error while verifying code",
-            },
+            }),
             {
                 status: 500,
+                headers: {
+                    "Content-Type": "application/json",
+                },
             }
         );
     }
