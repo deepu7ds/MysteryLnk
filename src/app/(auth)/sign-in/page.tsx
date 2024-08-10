@@ -50,14 +50,15 @@ const SignIn = () => {
                     variant: "destructive",
                 });
             }
-            toast({
-                title: "Login Successfull",
-            });
             if (result?.url) {
+                toast({
+                    title: "Login Successfull",
+                });
                 router.replace("/dashboard");
             }
             form.reset();
         } catch (error) {
+            console.log("Error while login user: ", error);
             toast({
                 title: "An error occurred",
                 description: "Please try again later.",
@@ -91,10 +92,10 @@ const SignIn = () => {
                                 name="identifier"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel>Email</FormLabel>
+                                        <FormLabel>Username</FormLabel>
                                         <FormControl>
                                             <Input
-                                                placeholder="email"
+                                                placeholder="ex: alan_turing"
                                                 {...field}
                                             />
                                         </FormControl>

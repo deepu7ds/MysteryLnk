@@ -75,13 +75,7 @@ const Dashboard = () => {
                 }
             } catch (error) {
                 const axiosError = error as AxiosError<ApiResponse>;
-                toast({
-                    title: "Error",
-                    description:
-                        axiosError.response?.data.message ||
-                        "Failed to fetch mesage settings",
-                    variant: "destructive",
-                });
+                console.log(axiosError);
             } finally {
                 setIsSwitchLoading(false);
                 setIsMessagesLoading(false);

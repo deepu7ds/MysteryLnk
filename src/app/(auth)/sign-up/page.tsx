@@ -45,7 +45,6 @@ const Signup = () => {
         resolver: zodResolver(signUpSchema),
         defaultValues: {
             username: "",
-            email: "",
             password: "",
         },
     });
@@ -92,7 +91,7 @@ const Signup = () => {
                 description: response.data.message,
             });
             form.reset();
-            router.replace(`verify/${username}`);
+            router.replace(`/sign-in`);
         } catch (error) {
             console.log("error in signup", error);
             const axiosError = error as AxiosError<ApiError>;
@@ -163,7 +162,7 @@ const Signup = () => {
                                     </FormItem>
                                 )}
                             />
-                            <FormField
+                            {/* <FormField
                                 control={form.control}
                                 name="email"
                                 render={({ field }) => (
@@ -179,7 +178,7 @@ const Signup = () => {
                                         <FormMessage />
                                     </FormItem>
                                 )}
-                            />
+                            /> */}
                             <FormField
                                 control={form.control}
                                 name="password"
@@ -252,7 +251,7 @@ const Signup = () => {
                                 href={"/sign-in"}
                                 replace
                             >
-                                Sign Up
+                                Sign In
                             </Link>
                         </p>
                     </footer>

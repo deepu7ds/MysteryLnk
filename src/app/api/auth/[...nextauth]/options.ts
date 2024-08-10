@@ -10,10 +10,10 @@ export const authOptions: NextAuthOptions = {
             id: "credentials",
             name: "Credentials",
             credentials: {
-                email: {
-                    label: "Email",
+                username: {
+                    label: "username",
                     type: "text",
-                    placeholder: "jsmith",
+                    placeholder: "alan_turing",
                 },
                 password: { label: "Password", type: "password" },
             },
@@ -21,14 +21,15 @@ export const authOptions: NextAuthOptions = {
                 await dbConfig();
                 try {
                     const user = await User.findOne({
-                        email: credentials.identifier,
+                        username: credentials.identifier,
                     });
+
                     if (!user) {
-                        throw new Error("No user found with this email");
+                        throw new Error("No user found with this username");
                     }
-                    if (!user.isVerified) {
-                        throw new Error("Please verify your account first");
-                    }
+                    // if (!user.isVerified) {
+                    //     throw new Error("Please verify your account first");
+                    // }
                     const isPasswordCorrect = await bcrypt.compare(
                         credentials.password,
                         user.password
@@ -54,7 +55,7 @@ export const authOptions: NextAuthOptions = {
         async jwt({ token, user }) {
             if (user) {
                 token._id = user._id?.toString();
-                token.isVerified = user.isVerified;
+                // token.isVerified = user.isVerified;
                 token.isAcceptingMessages = user.isAcceptingMessages;
                 token.username = user.username;
             }
@@ -63,7 +64,7 @@ export const authOptions: NextAuthOptions = {
         async session({ session, token }) {
             if (token) {
                 session.user._id = token._id;
-                session.user.isVerified = token.isVerified;
+                // session.user.isVerified = token.isVerified;
                 session.user.isAcceptingMessages = token.isAcceptingMessages;
                 session.user.username = token.username;
             }
