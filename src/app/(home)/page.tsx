@@ -15,7 +15,7 @@ import { Spotlight } from "@/components/ui/Spotlight";
 export default function Home() {
     return (
         <>
-            <div className="flex flex-col items-center">
+            <div className="flex flex-col items-center ">
                 <Spotlight
                     className="-top-40 left-0 md:left-60 md:-top-20 overflow-x-hidden"
                     fill="rgb(191, 219, 254)"

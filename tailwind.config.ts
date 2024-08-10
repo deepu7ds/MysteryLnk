@@ -92,7 +92,7 @@ const config = {
                 "accordion-down": "accordion-down 0.2s ease-out",
                 "accordion-up": "accordion-up 0.2s ease-out",
                 "caret-blink": "caret-blink 1.25s ease-out infinite",
-                spotlight: "spotlight 2s ease .75s 1 forwards",
+                spotlight: "spotlight 0s ease .0s 1 forwards",
             },
         },
     },
