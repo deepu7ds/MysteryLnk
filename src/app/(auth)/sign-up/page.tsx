@@ -10,7 +10,7 @@ import { useToast } from "@/components/ui/use-toast";
 import { useRouter } from "next/navigation";
 import { signUpSchema } from "@/schemas/signUp.schema";
 import { ApiError } from "next/dist/server/api-utils";
-import { ApiResponse } from "@/types/apiResponse";
+import { ApiResponse } from "@/types/ApiResponse";
 import { Loader2 } from "lucide-react";
 import { ReloadIcon } from "@radix-ui/react-icons";
 import {
