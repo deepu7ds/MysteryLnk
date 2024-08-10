@@ -6,7 +6,7 @@ import { Switch } from "@/components/ui/switch";
 import { useToast } from "@/components/ui/use-toast";
 import { Message, User } from "@/models/user.model";
 import { acceptMessageSchema } from "@/schemas/acceptMessage.schema";
-import { ApiResponse } from "@/types/ApiResponse.ts";
+import { ApiResponse } from "@/types/ApiResponse";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios, { AxiosError } from "axios";
 import { useSession } from "next-auth/react";
