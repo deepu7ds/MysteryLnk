@@ -20,9 +20,12 @@ export async function middleware(request: NextRequest) {
     if (!token && url.pathname.startsWith("/dashboard")) {
         return NextResponse.redirect(new URL("/", request.url));
     }
+    if (url.pathname.startsWith("/verify")) {
+        return NextResponse.redirect(new URL("/", request.url));
+    }
     return NextResponse.next();
 }
 
 export const config = {
-    matcher: ["/sign-in", "/sign-up", "/dashboard"],
+    matcher: ["/sign-in", "/sign-up", "/dashboard", "/verify"],
 };
