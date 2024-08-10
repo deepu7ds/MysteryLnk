@@ -18,10 +18,10 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en" className="dark">
+        <html lang="en" className="dark overflow-x-hidden">
             <AuthProvider>
                 <body
-                    className={`${roboto.className} dark:bg-black bg-white dark:bg-dot-white/[0.2] bg-dot-black/[0.2]`}
+                    className={`${roboto.className} dark:bg-black bg-white dark:bg-dot-white/[0.2] bg-dot-black/[0.2] overflow-x-hidden w-[100%]`}
                 >
                     <Navbar />
                     {children}

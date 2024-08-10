@@ -17,7 +17,7 @@ export default function Home() {
         <>
             <div className="flex flex-col items-center">
                 <Spotlight
-                    className="-top-40 left-0 md:left-60 md:-top-20"
+                    className="-top-40 left-0 md:left-60 md:-top-20 overflow-x-hidden"
                     fill="rgb(191, 219, 254)"
                 />
                 <section className="grid lg:grid-cols-12 lg:gap-8 items-center w-[80%] h-[70vh] lg:h-[50vh] justify-center">
