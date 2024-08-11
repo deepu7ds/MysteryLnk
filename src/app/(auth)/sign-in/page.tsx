@@ -95,7 +95,7 @@ const SignIn = () => {
                                         <FormLabel>Username</FormLabel>
                                         <FormControl>
                                             <Input
-                                                placeholder="ex: alan_turing"
+                                                placeholder="username"
                                                 {...field}
                                             />
                                         </FormControl>

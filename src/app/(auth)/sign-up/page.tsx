@@ -133,7 +133,7 @@ const Signup = () => {
                                         <FormControl>
                                             <div className="relative">
                                                 <Input
-                                                    placeholder="username"
+                                                    placeholder="ex: alan_turing"
                                                     {...field}
                                                     onChange={(e) => {
                                                         field.onChange(e);
