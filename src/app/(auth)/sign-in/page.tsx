@@ -134,7 +134,7 @@ const SignIn = () => {
                                         disabled={isSubmitting}
                                         className="px-6"
                                     >
-                                        Sign Up
+                                        Login
                                     </Button>
                                 )}
                             </div>

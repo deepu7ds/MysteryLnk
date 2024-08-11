@@ -237,7 +237,7 @@ const Signup = () => {
                                         disabled={isSubmitting}
                                         className="px-6"
                                     >
-                                        Sign Up
+                                        Create Account
                                     </Button>
                                 )}
                             </div>
@@ -251,7 +251,7 @@ const Signup = () => {
                                 href={"/sign-in"}
                                 replace
                             >
-                                Sign In
+                                Login
                             </Link>
                         </p>
                     </footer>
