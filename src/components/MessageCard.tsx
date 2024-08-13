@@ -17,6 +17,7 @@ import { Message } from "@/models/user.model";
 import { useToast } from "./ui/use-toast";
 import { ApiResponse } from "@/types/ApiResponse";
 import axios from "axios";
+import { formatDistanceToNow } from "date-fns";
 
 type MessageCardProp = {
     message: Message;
@@ -60,7 +61,12 @@ const MessageCard = ({ message, onMessageDelete }: MessageCardProp) => {
                     </AlertDialogContent>
                 </AlertDialog>
                 <CardContent>
-                    <p>{message.content}</p>
+                    <p className="text-md">{message.content}</p>
+                    <span className="text-xs text-gray-400">
+                        {formatDistanceToNow(new Date(message.createdAt), {
+                            addSuffix: true,
+                        })}
+                    </span>
                 </CardContent>
             </Card>
         </>
