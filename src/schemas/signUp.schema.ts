@@ -13,11 +13,5 @@ export const signUpSchema = z.object({
     password: z
         .string()
         .min(6, "Password must have atleast 6 letter")
-        .max(20, "Password must have atmost 10 letter")
-        .regex(/(?=.*[0-9])/, "Password must include at least one number")
-        .regex(/(?=.*[a-zA-Z])/, "Password must include at least one alphabet")
-        .regex(
-            /(?=.*[!@#$%^&*])/,
-            "Password must include at least one special character"
-        ),
+        .max(20, "Password must have atmost 10 letter"),
 });
