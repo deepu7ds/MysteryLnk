@@ -24,11 +24,20 @@ const Navbar = () => {
     const user: User = session?.user as User;
     const router = useRouter();
 
-    const [isDarkMode, setIsDarkMode] = useState(true);
+    const [isDarkMode, setIsDarkMode] = useState(false);
 
     const toggleTheme = () => {
-        setIsDarkMode(!isDarkMode);
+        const newTheme = !isDarkMode;
+        setIsDarkMode(newTheme);
+        localStorage.setItem("theme", newTheme ? "dark" : "light");
     };
+
+    useEffect(() => {
+        const storedTheme = localStorage.getItem("theme");
+        if (storedTheme) {
+            setIsDarkMode(storedTheme === "dark");
+        }
+    }, []);
 
     useEffect(() => {
         const htmlElement = document.documentElement;
