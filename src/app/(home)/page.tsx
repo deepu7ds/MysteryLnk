@@ -15,6 +15,7 @@ import { Instagram } from "lucide-react";
 import { Linkedin } from "lucide-react";
 import { Github } from "lucide-react";
 import { Spotlight } from "@/components/ui/Spotlight";
+import { InView } from "@/components/ui/in-view";
 
 export default function Home() {
     return (
@@ -24,7 +25,15 @@ export default function Home() {
                     className="-top-40 left-0 md:left-60 md:-top-20 overflow-x-hidden"
                     fill="rgb(191, 219, 254)"
                 />
-                <section className="grid lg:grid-cols-12 lg:gap-8 items-center w-[80%] h-[70vh] lg:h-[50vh] justify-center">
+                <InView
+                    variants={{
+                        hidden: { opacity: 0, y: 100, filter: "blur(4px)" },
+                        visible: { opacity: 1, y: 0, filter: "blur(0px)" },
+                    }}
+                    viewOptions={{ margin: "0px 0px -200px 0px" }}
+                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                    className="grid lg:grid-cols-12 lg:gap-8 items-center w-[80%] h-[80vh] lg:h-[70vh] justify-center"
+                >
                     <div className="col-span-6 text-center">
                         <p className="text-5xl font-extrabold text-center">
                             Send Anonymous Message to{" "}
@@ -56,8 +65,16 @@ export default function Home() {
                             className="rounded-xl block dark:hidden"
                         />
                     </div>
-                </section>
-                <section className="grid lg:grid-cols-12 lg:gap-8 items-center w-[80%] h-[50vh] lg:h-[40vh] justify-center">
+                </InView>
+                <InView
+                    variants={{
+                        hidden: { opacity: 0, y: 100, filter: "blur(4px)" },
+                        visible: { opacity: 1, y: 0, filter: "blur(0px)" },
+                    }}
+                    viewOptions={{ margin: "0px 0px -200px 0px" }}
+                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                    className="grid lg:grid-cols-12 lg:gap-8 items-center w-[80%] h-[50vh] lg:h-[60vh] justify-center"
+                >
                     <div className="col-span-6 border-2 border-gray-200 w-fit rounded-2xl  shadow-lg">
                         <Image
                             src={hero2Image}
@@ -78,8 +95,16 @@ export default function Home() {
                         Manage Your{" "}
                         <span className="text-blue-400">Messages </span> here.
                     </p>
-                </section>
-                <section className="flex flex-col lg:flex-row my-10 lg:md-0 justify-around gap-10 container h-[40vh]">
+                </InView>
+                <InView
+                    variants={{
+                        hidden: { opacity: 0, y: 100, filter: "blur(4px)" },
+                        visible: { opacity: 1, y: 0, filter: "blur(0px)" },
+                    }}
+                    viewOptions={{ margin: "0px 0px -200px 0px" }}
+                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                    className="flex flex-col lg:flex-row my-10 lg:md-0 justify-around gap-10 container h-[40vh]"
+                >
                     <div className="flex flex-col justify-center items-center gap-4">
                         <Image
                             src={hero3Image}
@@ -125,7 +150,7 @@ export default function Home() {
                             when you don&apos;t want to receive messages.
                         </p>
                     </div>
-                </section>
+                </InView>
                 <footer className="grid lg:grid-cols-12 gap-6 justify-center w-full px-6 lg:px-[2.5rem] py-4">
                     <div className="col-span-6 lg:px-6 space-y-2">
                         <h1 className="text-2xl font-extrabold text-center">
