@@ -119,7 +119,7 @@ const Dashboard = () => {
 
     // const { username } = session?.user as User;
     const username = user?.username;
-    const baseUrl = `https://mystery-lnk.vercel.app/`; // todo change this hard coded value bitch
+    const baseUrl = `https://mystery-lnk.vercel.app`; // todo change this hard coded value bitch
     const profileUrl = `${baseUrl}/u/${username}`;
 
     const copyToClipboard = () => {
