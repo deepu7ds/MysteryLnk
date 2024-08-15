@@ -30,10 +30,11 @@ export async function GET(request: Request) {
         }
         let { username } = result.data;
         username = username.toLowerCase();
+
         const existingVerifiedUser = await User.findOne({
             username,
-            isVerified: true,
         });
+
         if (existingVerifiedUser) {
             return new Response(
                 JSON.stringify({
