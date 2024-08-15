@@ -19,7 +19,7 @@ import { useRouter } from "next/navigation";
 const Dashboard = () => {
     const [messages, setMessages] = useState<Message[]>([]);
     const [isMessagesLoading, setIsMessagesLoading] = useState(true);
-    const [isSwitchLoading, setIsSwitchLoading] = useState(false);
+    const [isSwitchLoading, setIsSwitchLoading] = useState(true);
 
     const { toast } = useToast();
 
@@ -191,7 +191,7 @@ const Dashboard = () => {
                         <p>You have not received any message yet.</p>
                     )
                 ) : (
-                    <div className="space-y-4">
+                    <div className="space-y-4 mt-4">
                         <Skeleton className="h-16" />
                         <Skeleton className="h-16" />
                         <Skeleton className="h-16" />
