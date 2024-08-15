@@ -111,9 +111,7 @@ const Signup = () => {
             <div className="flex justify-center items-center h-[100svh] px-4">
                 <div className="border-2 border-gray-200 px-4 py-10 lg:p-10 rounded-md w-full max-w-md shadow-md ">
                     <div className=" mb-5 text-center">
-                        <h1 className="text-3xl mb-1 font-bold">
-                            Create Account
-                        </h1>
+                        <h1 className="text-3xl mb-1 font-bold">Get Started</h1>
 
                         <p className="text-slate-400">
                             Fill out the form below to continue
